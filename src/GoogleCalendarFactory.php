@@ -26,6 +26,10 @@ class GoogleCalendarFactory
             Google_Service_Calendar::CALENDAR,
         ]);
 
+        if ($config['wide_domain_impersonation_user']) {
+            $client->setSubject($config['wide_domain_impersonation_user']);
+        }
+
         $client->setAuthConfig($config['service_account_credentials_json']);
 
         return $client;
